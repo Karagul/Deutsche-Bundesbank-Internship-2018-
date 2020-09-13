@@ -1,27 +1,22 @@
-#Zwei mögliche Datasets:
+#Zwei mÃ¶gliche Datasets:
 
 
-###Reiseverkehrsdaten 1971-2018. Von Österreich, Schweiz und Spanien.
-
-dataset = read.csv(file="R:\\Zentrale\\ZB-S\\Daten\\S3\\S3_Gesamt\\S31+Vorz.S3\\Praktikanten\\Miftachov\\Saisonale_Kointegration_Monatsdaten\\RCode\\Daten\\Reiseverkehr-AT-CH-ES.csv", header = T, sep=";", stringsAsFactors = FALSE,dec = ",")
+###Reiseverkehrsdaten 1971-2018. Von Ã–sterreich, Schweiz und Spanien.
 
 
 
 ###Produktion, Umsatz und Auftragseingang 1991-2018. Saisonal bereinigt und original Zeitreihe:
 
-#dataset = read.csv(file="R:\\Zentrale\\ZB-S\\Daten\\S3\\S3_Gesamt\\S31+Vorz.S3\\Praktikanten\\Miftachov\\Saisonale_Kointegration_Monatsdaten\\RCode\\Daten\\Zeitreihen.csv", header = T, sep=";", stringsAsFactors = FALSE, dec = ",")
                                                                                           
 
 #Mit dem ersten Dataset:
 x=dataset$AusgabenSpanien[1:567]
-y=dataset$AusgabenÖsterreich[1:567]
+y=dataset$AusgabenÃ–sterreich[1:567]
 
 
 #Hauptfunktion:
 scoint = function(x, y, option="default"){       #option  = "manual" and defining M or option = "default" can be used.
   library(smooth)                                 
-  distr = readRDS("R:\\Zentrale\\ZB-S\\Daten\\S3\\S3_Gesamt\\S31+Vorz.S3\\Praktikanten\\Miftachov\\Saisonale_Kointegration_Monatsdaten\\RCode\\hegy_distr12.rds")
-  distr2 = readRDS("R:\\Zentrale\\ZB-S\\Daten\\S3\\S3_Gesamt\\S31+Vorz.S3\\Praktikanten\\Miftachov\\Saisonale_Kointegration_Monatsdaten\\RCode\\eghl_distr.rds")  
   
   ##################################################################################
   
@@ -388,7 +383,7 @@ scoint = function(x, y, option="default"){       #option  = "manual" and definin
         
         weg = which(p==max(p))
         if (max(p) > 0.05 & ncol(at)>1){
-          at = at[,-weg]; name = name[-weg]} else if (max(p) > 0.05 & ncol(at)==1){#Kürzen des Vectors zu einem Null vector wird übersprungen und direkt regressiert.
+          at = at[,-weg]; name = name[-weg]} else if (max(p) > 0.05 & ncol(at)==1){#KÃ¼rzen des Vectors zu einem Null vector wird Ã¼bersprungen und direkt regressiert.
             resreg2 = lm(regres ~ 0 + Lag(-res2,1))}                        #d.h. alle Lags sind insignifikant
       }
       
@@ -430,7 +425,7 @@ scoint = function(x, y, option="default"){       #option  = "manual" and definin
         weg = which(p==max(p))
         
         if (max(p) > 0.05 & ncol(at)>1){
-          at = at[,-weg]; name = name[-weg]} else if (max(p) > 0.05 & ncol(at)==1){#Kürzen des Vectors zu einem Null vector wird übersprungen und direkt regressiert.
+          at = at[,-weg]; name = name[-weg]} else if (max(p) > 0.05 & ncol(at)==1){#KÃ¼rzen des Vectors zu einem Null vector wird Ã¼bersprungen und direkt regressiert.
             resreg3 = lm(regres ~ 0 + Lag(-res3,2) + Lag(-res3,1))                   #d.h. alle Lags sind insignifikant
           }
       }
