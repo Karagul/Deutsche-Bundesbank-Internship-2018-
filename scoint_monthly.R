@@ -3,7 +3,7 @@
 
 ###Reiseverkehrsdaten 1971-2018. Von Österreich, Schweiz und Spanien.
 
-
+#path of data set removed due to data safety. 
 
 ###Produktion, Umsatz und Auftragseingang 1991-2018. Saisonal bereinigt und original Zeitreihe:
 
@@ -17,7 +17,7 @@ y=dataset$AusgabenÖsterreich[1:567]
 #Hauptfunktion:
 scoint = function(x, y, option="default"){       #option  = "manual" and defining M or option = "default" can be used.
   library(smooth)                                 
-  
+  #path of distr1 and path of distr2 removed due to data safety.
   ##################################################################################
   
   Diff = function(x,lag=1, ...) {
